@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fórmulas Físicas Esenciales</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #1a365d;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 0.5rem;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+    }
+
+    table {
+      width: 90%;
+      max-width: 1000px;
+      margin: 2rem auto;
+      border-collapse: collapse;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: #1a365d;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f0f0f0;
+    }
+
+    tr:hover {
+      background-color: #e6f0ff;
+      transition: 0.3s;
+    }
+
+    .icon {
+      margin-right: 0.5rem;
+    }
+
+    .calculator {
+      margin-top: 0.5rem;
+    }
+
+    .calculator input {
+      width: 60px;
+      margin-right: 5px;
+      padding: 3px;
+    }
+
+    .sabias {
+      width: 90%;
+      max-width: 800px;
+      background-color: #fff3e0;
+      border-left: 6px solid #e67e22;
+      padding: 1rem;
+      margin: 2rem auto;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .btn-descarga {
+      display: block;
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      margin: 2rem auto;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .btn-descarga:hover {
+      background-color: #cf711c;
+    }
+
+    footer {
+      background-color: #1a365d;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    footer a {
+      color: #e67e22;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      th {
+        display: none;
+      }
+
+      tr {
+        margin: 1rem 0;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 1rem;
+      }
+
+      td {
+        padding: 0.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Fórmulas Físicas Esenciales</h1>
+    <p>Conceptos básicos de física en un solo lugar</p>
+  </header>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Magnitud</th>
+        <th>Fórmula</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>⚖️ Densidad</td>
+        <td>D = M / V</td>
+        <td>Densidad = masa por unidad de volumen
+          <div class="calculator">
+            M: <input id="densidad-m" type="number" placeholder="kg">
+            V: <input id="densidad-v" type="number" placeholder="m³">
+            <button onclick="calcDensidad()">=</button>
+            <span id="densidad-res"></span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>🏃‍♂️ Velocidad</td>
+        <td>V = Δx / Δt</td>
+        <td>Velocidad = desplazamiento sobre tiempo
+          <div class="calculator">
+            e: <input id="vel-e" type="number" placeholder="m">
+            t: <input id="vel-t" type="number" placeholder="s">
+            <button onclick="calcVelocidad()">=</button>
+            <span id="vel-res"></span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>🚀 Aceleración</td>
+        <td>a = (V - V₀) / t</td>
+        <td>Aceleración = cambio de velocidad por tiempo
+          <div class="calculator">
+            V: <input id="acel-v" type="number">
+            V₀: <input id="acel-v0" type="number">
+            t: <input id="acel-t" type="number">
+            <button onclick="calcAceleracion()">=</button>
+            <span id="acel-res"></span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>💪 Fuerza</td>
+        <td>F = m × a</td>
+        <td>Fuerza = masa por aceleración
+          <div class="calculator">
+            m: <input id="fuerza-m" type="number">
+            a: <input id="fuerza-a" type="number">
+            <button onclick="calcFuerza()">=</button>
+            <span id="fuerza-res"></span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>🧱 Presión</td>
+        <td>P = F / S</td>
+        <td>Presión = fuerza aplicada sobre un área
+          <div class="calculator">
+            F: <input id="presion-f" type="number">
+            S: <input id="presion-s" type="number">
+            <button onclick="calcPresion()">=</button>
+            <span id="presion-res"></span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>🔧 Trabajo</td>
+        <td>T = F × D</td>
+        <td>Trabajo = fuerza por distancia
+          <div class="calculator">
+            F: <input id="trabajo-f" type="number">
+            D: <input id="trabajo-d" type="number">
+            <button onclick="calcTrabajo()">=</button>
+            <span id="trabajo-res"></span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>⚡ Potencia</td>
+        <td>P = W / t</td>
+        <td>Potencia = trabajo realizado entre tiempo
+          <div class="calculator">
+            W: <input id="pot-w" type="number">
+            t: <input id="pot-t" type="number">
+            <button onclick="calcPotencia()">=</button>
+            <span id="pot-res"></span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sabias">
+    <strong>¿Sabías qué?</strong> La presión atmosférica al nivel del mar es aproximadamente 101,325 Pascales (Pa), ¡lo suficiente para sostener una columna de mercurio de 76 cm!
+  </div>
+
+  <button class="btn-descarga" onclick="simularDescarga()">📥 Descargar fórmulas</button>
+
+  <footer>
+    © 2023 Física Simplificada San Juan Bautista
+    <a href="#contacto">Más recursos</a>
+  </footer>
+
+  <script>
+    function calcDensidad() {
+      const m = parseFloat(document.getElementById("densidad-m").value);
+      const v = parseFloat(document.getElementById("densidad-v").value);
+      const res = m / v;
+      document.getElementById("densidad-res").innerText = isFinite(res) ? res.toFixed(2) + " kg/m³" : "❌";
+    }
+
+    function calcVelocidad() {
+      const e = parseFloat(document.getElementById("vel-e").value);
+      const t = parseFloat(document.getElementById("vel-t").value);
+      const res = e / t;
+      document.getElementById("vel-res").innerText = isFinite(res) ? res.toFixed(2) + " m/s" : "❌";
+    }
+
+    function calcAceleracion() {
+      const v = parseFloat(document.getElementById("acel-v").value);
+      const v0 = parseFloat(document.getElementById("acel-v0").value);
+      const t = parseFloat(document.getElementById("acel-t").value);
+      const res = (v - v0) / t;
+      document.getElementById("acel-res").innerText = isFinite(res) ? res.toFixed(2) + " m/s²" : "❌";
+    }
+
+    function calcFuerza() {
+      const m = parseFloat(document.getElementById("fuerza-m").value);
+      const a = parseFloat(document.getElementById("fuerza-a").value);
+      const res = m * a;
+      document.getElementById("fuerza-res").innerText = isFinite(res) ? res.toFixed(2) + " N" : "❌";
+    }
+
+    function calcPresion() {
+      const f = parseFloat(document.getElementById("presion-f").value);
+      const s = parseFloat(document.getElementById("presion-s").value);
+      const res = f / s;
+      document.getElementById("presion-res").innerText = isFinite(res) ? res.toFixed(2) + " Pa" : "❌";
+    }
+
+    function calcTrabajo() {
+      const f = parseFloat(document.getElementById("trabajo-f").value);
+      const d = parseFloat(document.getElementById("trabajo-d").value);
+      const res = f * d;
+      document.getElementById("trabajo-res").innerText = isFinite(res) ? res.toFixed(2) + " J" : "❌";
+    }
+
+    function calcPotencia() {
+      const w = parseFloat(document.getElementById("pot-w").value);
+      const t = parseFloat(document.getElementById("pot-t").value);
+      const res = w / t;
+      document.getElementById("pot-res").innerText = isFinite(res) ? res.toFixed(2) + " W" : "❌";
+    }
+
+    function simularDescarga() {
+      alert("📥 Se ha simulado la descarga del archivo PDF con fórmulas.");
+    }
+  </script>
+</body>
+</html>
